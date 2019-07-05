@@ -12,7 +12,7 @@ Server
 - Server implements Zero copy upgrade;
 - Server omits goroutine blocking read by means of Linux epoll facility. It uses mail.ru library easygo/netpoll,
   that allow to wait for data readiness in websocket and run handler only when it need (omiting run blocking)
-- Server control goroutine resourses. It manages Go Routine pool, allowing to create only specicifed number of concurrent
+- Server control goroutine resources. It manages Go Routine pool, allowing to create only specicifed number of concurrent
   Go routines
   
 
