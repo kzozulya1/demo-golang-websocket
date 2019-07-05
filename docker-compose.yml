@@ -1,0 +1,16 @@
+version: '3'
+services:
+    #GOLANG WebScoket experiment sandbox
+    golang-websocket-server:
+        build: 
+            context: ./golang-websocket
+            dockerfile: DockerfileDEV
+        volumes:
+          - ./golang-websocket/src:/go/src/app
+        ports:
+         - "15000:15000"          
+        environment:
+            TCP_PORT: ":15000"
+        container_name: golang-websocket-server
+        entrypoint: gin --appPort 15000 --path /go/src/app -b main.bin -i run main.go
+   

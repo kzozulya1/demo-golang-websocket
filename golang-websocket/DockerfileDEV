@@ -1,0 +1,16 @@
+FROM golang
+ENV APP_API_PORT 15000
+
+WORKDIR /go/src/app
+
+RUN apt-get update && \
+    apt-get install  -y git
+
+RUN go get -u github.com/codegangsta/gin
+RUN go get -u github.com/gorilla/websocket
+RUN go get -u github.com/mailru/easygo/netpoll
+RUN go get -u github.com/gobwas/ws
+
+ADD ./src .
+
+ENTRYPOINT gin --path . --bin main.bin -i --appPort $APP_API_PORT run main.go
