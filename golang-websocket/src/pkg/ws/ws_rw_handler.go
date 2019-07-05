@@ -34,9 +34,8 @@ func NewReadHandler(conn net.Conn) *ReadHandler {
 func (wrh *ReadHandler) OnDataReady() error {
 	header, err := wrh.reader.NextFrame()
 	if err != nil {
-
 		if gpool.HTTPisClosedConnError(err) {
-			return errors.New("connection is closed\n")
+			return errors.New("connection is closed")
 		}
 		return fmt.Errorf("Next frame read error: %s", err.Error())
 	}
